@@ -9,6 +9,9 @@ package com.company.credit.web.ui.credit;
 
 import com.company.credit.entity.*;
 import com.haulmont.cuba.core.global.UserSessionSource;
+import com.haulmont.cuba.gui.components.Action;
+import com.haulmont.cuba.gui.components.Component;
+import com.haulmont.cuba.gui.components.DialogAction;
 import com.haulmont.thesis.web.ui.basic.editor.AbstractCardEditor;
 import com.haulmont.thesis.web.ui.basic.editor.CardHeaderFragment;
 import com.haulmont.workflow.core.app.WfUtils;
@@ -31,6 +34,8 @@ public class CreditEdit<T extends Credit> extends AbstractCardEditor<T> {
     protected NumerationService numerationService;
     @Inject
     protected UserSessionSource uss;
+
+    protected boolean closeFlag = false;
     
     @Override
     protected String getHiddenTabsConfig() {
@@ -106,5 +111,35 @@ public class CreditEdit<T extends Credit> extends AbstractCardEditor<T> {
             boolean editable = getAccessData().isCardRolesEditable();
             cardRolesFrame.setEditable(editable);
         }
+    }
+
+    @Override
+    public boolean validateAll(){
+        boolean b = super.validateAll();
+        if(b){
+            if(!closeFlag){
+                if(getItem().getAmount() == null){
+                    showOptionDialog(getMessage("Внимание!"),
+                            getMessage("В документе не заполнено поле сумма кредита. Желаете сохранить документ?"),
+                            MessageType.CONFIRMATION,
+                            new Action[]{
+                                    new DialogAction(DialogAction.Type.YES, true){
+                                        @Override
+                                        public void actionPerform(Component component){
+                                            closeFlag = true;
+                                            close(COMMIT_ACTION_ID);
+                                        }
+                                    },
+                                    new DialogAction(DialogAction.Type.NO){
+                                        @Override
+                                        public void actionPerform(Component component){
+                                        }
+                                    }
+                            });
+                    return false;
+                }
+            }
+        }
+        return true;
     }
 }
