@@ -6,6 +6,9 @@
 
 package com.company.credit.web.ui.creditapplication;
 
+import com.company.credit.entity.Credit;
+import com.haulmont.cuba.gui.components.TextField;
+import com.haulmont.thesis.core.entity.Bank;
 import com.haulmont.thesis.web.actions.PrintReportAction;
 import com.haulmont.thesis.web.ui.basicdoc.editor.AbstractDocEditor;
 import com.haulmont.thesis.web.voice.VoiceActionPriorities;
@@ -22,6 +25,9 @@ public class CreditApplicationEdit<T extends CreditApplication> extends Abstract
 
     @Inject
     protected LookupPickerField<DocCategory> docCategory;
+
+    @Inject
+    private TextField<Bank> bankName;
 
     @Override
     public void init(Map<String, Object> params) {
@@ -53,5 +59,16 @@ public class CreditApplicationEdit<T extends CreditApplication> extends Abstract
             hiddenTabs.put("cardCommentTab", getMessage("cardCommentTab"));
         }
         super.fillHiddenTabs();
+    }
+
+    @Override
+    protected void cardPropertyChanged(String property, Object prevValue, Object value) {
+        super.cardPropertyChanged(property, prevValue, value);
+        if(property.equals("credit")){
+            Credit credit = getItem().getCredit();
+            if (credit != null) {
+                bankName.setValue(credit.getBank());
+            }
+        }
     }
 }
