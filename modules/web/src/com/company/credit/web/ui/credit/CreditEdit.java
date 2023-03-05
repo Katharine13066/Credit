@@ -9,13 +9,11 @@ package com.company.credit.web.ui.credit;
 
 import com.company.credit.entity.*;
 import com.haulmont.cuba.core.global.UserSessionSource;
-import com.haulmont.cuba.gui.components.Action;
-import com.haulmont.cuba.gui.components.Component;
-import com.haulmont.cuba.gui.components.DialogAction;
+import com.haulmont.cuba.gui.components.*;
+import com.haulmont.thesis.core.app.UserSessionTools;
 import com.haulmont.thesis.web.ui.basic.editor.AbstractCardEditor;
 import com.haulmont.thesis.web.ui.basic.editor.CardHeaderFragment;
 import com.haulmont.workflow.core.app.WfUtils;
-import com.haulmont.cuba.gui.components.Button;
 import org.apache.commons.lang.StringUtils;
 import com.haulmont.cuba.core.global.LoadContext;
 import com.haulmont.thesis.core.entity.Numerator;
@@ -24,19 +22,32 @@ import com.haulmont.cuba.core.entity.Entity;
 import com.haulmont.cuba.core.global.PersistenceHelper;
 
 import javax.inject.Inject;
+import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class CreditEdit<T extends Credit> extends AbstractCardEditor<T> {
 
     @Inject
     protected NumerationService numerationService;
     @Inject
+    private UserSessionTools userSessionTools;
+    @Inject
     protected UserSessionSource uss;
-
+    @Inject
+    private TextField<BigDecimal> amount;
     protected boolean closeFlag = false;
-    
+
+    @Override
+    public void init(Map<String, Object> params) {
+        super.init(params);
+        if(!userSessionTools.isCurrentUserAdministrator()){
+            amount.setVisible(false);
+        }
+    }
+
     @Override
     protected String getHiddenTabsConfig() {
         return "processTab,securityTab,cardLogTab";
