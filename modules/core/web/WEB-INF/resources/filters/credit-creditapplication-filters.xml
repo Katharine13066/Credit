@@ -57,4 +57,27 @@
             <include href="templates/my-department-filter-conditions.xml"/>
         </conditions>
     </filterDescriptor>
+
+    <!-- Фильтр "Moй банк" -->
+    <filterDescriptor>
+        <filterEntities>
+            <filterEntity screen="credit$CreditApplication.lookup"
+                          code="SysFilter.ByBank"
+                          entityName="credit$CreditApplication"/>
+        </filterEntities>
+        <conditions>
+            <filter>
+                <and>
+                    <c name="Bank" class="com.haulmont.thesis.core.entity.Bank"
+                       caption="msg://com.haulmont.thesis.core.entity/Bank" type="CUSTOM" entityAlias="d">
+                        d.credit.bank.id = :component$genericFilter.bankId
+                        <param name="component$genericFilter.bankId"
+                               javaClass="com.haulmont.thesis.core.entity.Bank">
+                            NULL
+                        </param>
+                    </c>
+                </and>
+            </filter>
+        </conditions>
+    </filterDescriptor>
 </filters>
