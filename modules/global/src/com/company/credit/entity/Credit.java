@@ -6,6 +6,7 @@
 
 package com.company.credit.entity;
 
+import com.haulmont.chile.core.annotations.MetaProperty;
 import com.haulmont.chile.core.annotations.NamePattern;
 import com.haulmont.cuba.core.entity.annotation.EnableRestore;
 import com.haulmont.cuba.core.entity.annotation.Listeners;
@@ -32,6 +33,10 @@ public class Credit extends TsCard {
     @Column(name = "NUMBER_", length = 50)
     protected String number;
 
+    @Transient
+    @MetaProperty
+    protected BigDecimal sum;
+
     @JoinColumn(name = "SURETY_ID")
     @OneToOne(fetch = FetchType.LAZY)
     protected Contractor surety;
@@ -50,6 +55,14 @@ public class Credit extends TsCard {
 
     @Column(name = "AMOUNT")
     protected BigDecimal amount;
+
+    public BigDecimal getSum() {
+        return sum;
+    }
+
+    public void setSum(BigDecimal sum) {
+        this.sum = sum;
+    }
 
     public Contractor getSurety() {
         return surety;

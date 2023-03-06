@@ -8,9 +8,12 @@ package com.company.credit.web.ui.credit;
 
 
 import com.company.credit.entity.*;
+import com.company.credit.service.BankService;
 import com.haulmont.cuba.core.global.UserSessionSource;
 import com.haulmont.cuba.gui.components.*;
+import com.haulmont.cuba.gui.screen.Subscribe;
 import com.haulmont.thesis.core.app.UserSessionTools;
+import com.haulmont.thesis.core.entity.Bank;
 import com.haulmont.thesis.web.ui.basic.editor.AbstractCardEditor;
 import com.haulmont.thesis.web.ui.basic.editor.CardHeaderFragment;
 import com.haulmont.workflow.core.app.WfUtils;
@@ -38,6 +41,12 @@ public class CreditEdit<T extends Credit> extends AbstractCardEditor<T> {
     protected UserSessionSource uss;
     @Inject
     private TextField<BigDecimal> amount;
+
+    @Inject
+    private BankService bankService;
+
+    @Inject
+    private TextField<BigDecimal> creditSum;
     protected boolean closeFlag = false;
 
     @Override
@@ -152,5 +161,11 @@ public class CreditEdit<T extends Credit> extends AbstractCardEditor<T> {
             }
         }
         return true;
+    }
+
+    @Subscribe("bank")
+    public void onBankValueChange(HasValue.ValueChangeEvent<Bank> event) {
+        BigDecimal sum = bankService.getSum(getEditedEntity().getBank());
+        creditSum.setValue(sum);
     }
 }

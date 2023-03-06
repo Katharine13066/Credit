@@ -85,6 +85,14 @@
                                                              caption="msg://com.company.credit.entity/Credit.bank"
                                                              optionsDatasource="banksDs"/>
                                             </row>
+                                            <row id="creditRow">
+                                                <textField id="creditSum" caption="msg://credit.creditSum"
+                                                           datasource="cardDs"
+                                                           property="sum"
+                                                           width="180px"
+                                                           editable="false"
+                                                />
+                                            </row>
                                             <row id="suretyRow">
                                                 <lookupField id="surety" property="surety" datasource="cardDs"
                                                              width="theme://thesis.gui.editor-fields.width"
