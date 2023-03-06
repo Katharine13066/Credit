@@ -6,15 +6,14 @@
 
 package com.company.credit.entity;
 
+import com.haulmont.chile.core.annotations.MetaProperty;
 import com.haulmont.chile.core.annotations.NamePattern;
 import com.haulmont.cuba.core.entity.StandardEntity;
 import com.haulmont.cuba.core.entity.annotation.EnableRestore;
 import com.haulmont.cuba.core.entity.annotation.TrackEditScreenHistory;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Lob;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.math.BigDecimal;
 
 @Table(name = "CREDIT_CREDIT_TYPE")
 @Entity(name = "credit$CreditType")
@@ -28,12 +27,24 @@ public class CreditType extends StandardEntity {
     @Column(name = "CODE", nullable = false, length = 9)
     protected String code;
 
+    @Transient
+    @MetaProperty
+    protected BigDecimal number;
+
     @Column(name = "NAME", nullable = false, length = 150)
     protected String name;
 
     @Column(name = "COMMENT_")
     @Lob
     protected String comment;
+
+    public void setNumber(BigDecimal number) {
+        this.number = number;
+    }
+
+    public BigDecimal getNumber() {
+        return number;
+    }
 
     public String getComment() {
         return comment;

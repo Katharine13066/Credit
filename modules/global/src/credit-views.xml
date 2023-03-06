@@ -122,4 +122,7 @@
     <view entity="credit$Credit" name="credit-view" extends="_minimal">
         <property name="bank" view="_minimal"/>
     </view>
+    <view entity="credit$CreditType" name="creditType-view" extends="_minimal">
+        <property name="number"/>
+    </view>
 </views>

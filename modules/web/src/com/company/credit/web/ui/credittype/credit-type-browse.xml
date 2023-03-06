@@ -40,11 +40,20 @@
                                 action="creditTypesTable.edit"/>
                         <button id="removeBtn"
                                 action="creditTypesTable.remove"/>
+                        <textField id="updated"
+                                   property="number"
+                                   datasource="creditTypesDs"
+                                   caption="msg://creditType.update"
+                                   />
+                        <button id="updateBtn"
+                                caption="msg://creditType.updateBtn"
+                                action="creditTypesTable.update"/>
                     </buttonsPanel>
                     <actions>
                         <action id="create"/>
                         <action id="edit"/>
                         <action id="remove"/>
+                        <action id="update"/>
                     </actions>
                     <rowsCount/>
                     <columns>

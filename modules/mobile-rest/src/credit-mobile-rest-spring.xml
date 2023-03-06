@@ -13,6 +13,7 @@
                 <entry key="credit_CreditApplicationService"
                        value="com.company.credit.service.CreditApplicationService"/>
                 <entry key="credit_BankService" value="com.company.credit.service.BankService"/>
+                <entry key="credit_CreditTypeService" value="com.company.credit.service.CreditTypeService"/>
             </map>
         </property>
     </bean>
