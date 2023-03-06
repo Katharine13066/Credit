@@ -78,7 +78,7 @@
                 <![CDATA[select o from df$Organization o order by o.name]]>
             </query>
         </collectionDatasource>
-        <collectionDatasource id="creditsDs" class="com.company.credit.entity.Credit" view="_minimal">
+        <collectionDatasource id="creditsDs" class="com.company.credit.entity.Credit" view="credit-view">
             <query><![CDATA[ select e from credit$Credit e]]></query>
         </collectionDatasource>
         <collectionDatasource id="individualsDs" class="com.haulmont.thesis.core.entity.Individual" view="_minimal">

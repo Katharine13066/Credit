@@ -119,4 +119,7 @@
         <property name="date"/>
         <property name="description"/>
     </view>
+    <view entity="credit$Credit" name="credit-view" extends="_minimal">
+        <property name="bank" view="_minimal"/>
+    </view>
 </views>
