@@ -15,6 +15,7 @@ import org.springframework.stereotype.Service;
 
 import javax.inject.Inject;
 import java.math.BigDecimal;
+import java.util.UUID;
 
 @Service(BankService.NAME)
 public class BankServiceBean implements BankService {
@@ -24,13 +25,18 @@ public class BankServiceBean implements BankService {
 
     @Override
     public BigDecimal getSum(Bank bank) {
+        return getSum(bank.getId());
+    }
+
+    @Override
+    public BigDecimal getSum(UUID uuid) {
         BigDecimal sum;
         try(Transaction transaction = persistence.createTransaction()) {
             EntityManager entityManager = persistence.getEntityManager();
             Query query = entityManager.createQuery(
                     "select sum(c.amount) from credit$Credit c where c.bank.id = :bankId"
             );
-            query.setParameter("bankId", bank.getId());
+            query.setParameter("bankId", uuid);
             sum = (BigDecimal) query.getFirstResult();
             transaction.commit();
         }

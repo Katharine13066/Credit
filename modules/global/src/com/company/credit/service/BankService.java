@@ -9,9 +9,12 @@ package com.company.credit.service;
 import com.haulmont.thesis.core.entity.Bank;
 
 import java.math.BigDecimal;
+import java.util.UUID;
 
 public interface BankService {
     String NAME = "credit_BankService";
 
-    public BigDecimal getSum(Bank bank);
+    BigDecimal getSum(Bank bank);
+
+    BigDecimal getSum(UUID uuid);
 }
