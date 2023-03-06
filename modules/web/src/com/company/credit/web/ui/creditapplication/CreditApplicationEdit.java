@@ -7,7 +7,11 @@
 package com.company.credit.web.ui.creditapplication;
 
 import com.company.credit.entity.Credit;
+import com.company.credit.service.CreditApplicationService;
+import com.haulmont.cuba.gui.Notifications;
+import com.haulmont.cuba.gui.components.HasValue;
 import com.haulmont.cuba.gui.components.TextField;
+import com.haulmont.cuba.gui.screen.Subscribe;
 import com.haulmont.thesis.core.entity.Bank;
 import com.haulmont.thesis.web.actions.PrintReportAction;
 import com.haulmont.thesis.web.ui.basicdoc.editor.AbstractDocEditor;
@@ -28,6 +32,12 @@ public class CreditApplicationEdit<T extends CreditApplication> extends Abstract
 
     @Inject
     private TextField<Bank> bankName;
+
+    @Inject
+    private Notifications notifications;
+
+    @Inject
+    private CreditApplicationService creditApplicationService;
 
     @Override
     public void init(Map<String, Object> params) {
@@ -70,5 +80,14 @@ public class CreditApplicationEdit<T extends CreditApplication> extends Abstract
                 bankName.setValue(credit.getBank());
             }
         }
+    }
+
+    @Subscribe("credit")
+    public void onCreditValueChange(HasValue.ValueChangeEvent<Credit> event) {
+        long count = creditApplicationService.getCount(getEditedEntity());
+        notifications
+                .create(Notifications.NotificationType.HUMANIZED)
+                .withCaption("Кол-во заявок у заемщика в банке равно " + count )
+                .show();
     }
 }
