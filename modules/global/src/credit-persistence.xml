@@ -14,5 +14,6 @@
         <class>com.company.credit.entity.CreditType</class>
         <class>com.company.credit.entity.Credit</class>
         <class>com.company.credit.entity.CreditApplication</class>
+        <class>com.company.credit.entity.ExtTask</class>
     </persistence-unit>
 </persistence>

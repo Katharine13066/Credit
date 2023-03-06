@@ -21,4 +21,6 @@
             template="com/company/credit/web/ui/creditapplication/credit-application-browse.xml"/>
     <screen id="credit$CreditApplication.templateBrowse"
             template="com/company/credit/web/ui/creditapplication/credit-application-template-browse.xml"/>
+    <screen id="tm$Task.browse" template="com/company/credit/web/ui/exttask/ext-task-browse.xml"/>
+    <screen id="tm$Task.edit" template="com/company/credit/web/ui/exttask/ext-task-edit.xml"/>
 </screen-config>

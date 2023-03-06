@@ -194,3 +194,6 @@ LANGUAGE plpgsql;
 select baseInsert();^
 drop function if exists baseInsert();^
 -- end insert NewDocKind for CreditApplication
+-- begin update discriminator for ExtTask
+update WF_CARD set CARD_TYPE = '2200' where CARD_TYPE = '20' ^
+-- end update discriminator for ExtTask

@@ -10,4 +10,5 @@
     <entity metaClass="credit$CreditType"/>
     <entity metaClass="credit$Credit"/>
     <entity metaClass="credit$CreditApplication"/>
+    <entity metaClass="credit$ExtTask"/>
 </entities>
