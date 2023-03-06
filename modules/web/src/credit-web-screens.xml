@@ -23,4 +23,10 @@
             template="com/company/credit/web/ui/creditapplication/credit-application-template-browse.xml"/>
     <screen id="tm$Task.browse" template="com/company/credit/web/ui/exttask/ext-task-browse.xml"/>
     <screen id="tm$Task.edit" template="com/company/credit/web/ui/exttask/ext-task-edit.xml"/>
+    <screen id="df$Individual.browse" template="com/company/credit/web/ui/extindividual/ext-individual-browse.xml"/>
+    <screen id="df$Individual.browseFrame"
+            template="com/company/credit/web/ui/extindividual/ext-individual-browse-frame.xml"/>
+    <screen id="df$Individual.edit" template="com/company/credit/web/ui/extindividual/ext-individual-edit.xml"/>
+    <screen id="df$Individual.browseFrame"
+            template="com/company/credit/web/ui/individual/ext-individual-browse-frame.xml"/>
 </screen-config>

@@ -7,9 +7,12 @@
 package com.company.credit.service;
 
 import com.company.credit.entity.CreditApplication;
+import com.haulmont.thesis.core.entity.Individual;
 
 public interface CreditApplicationService {
     String NAME = "credit_CreditApplicationService";
 
-    public long getCount(CreditApplication creditApplication);
+    long getCount(CreditApplication creditApplication);
+
+    long getCreditApplicationCount(Individual individual);
 }

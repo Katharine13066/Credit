@@ -197,3 +197,6 @@ drop function if exists baseInsert();^
 -- begin update discriminator for ExtTask
 update WF_CARD set CARD_TYPE = '2200' where CARD_TYPE = '20' ^
 -- end update discriminator for ExtTask
+-- begin update discriminator for ExtIndividual
+update DF_CORRESPONDENT set TYPE = 'A' where TYPE = 'I' ^
+-- end update discriminator for ExtIndividual

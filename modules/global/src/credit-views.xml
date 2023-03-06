@@ -165,4 +165,9 @@
         <property name="priority" view="_minimal"/>
         <property name="cardAdditionalInfo" view="_local"/>
     </view>
+    <view entity="credit$ExtIndividual" name="browse" extends="_local"/>
+    <view entity="credit$ExtIndividual" name="edit" overwrite="true" extends="_local">
+        <property name="correspondentAttachments" view="correspondent_attachment_edit"/>
+        <property name="accounts" view="contractor-edit"/>
+    </view>
 </views>

@@ -39,3 +39,6 @@ create table CREDIT_CREDIT_APPLICATION (
     primary key (CARD_ID)
 )^
 -- end CREDIT_CREDIT_APPLICATION
+-- begin DF_INDIVIDUAL
+alter table DF_INDIVIDUAL add column COUNTER bigint ^
+-- end DF_INDIVIDUAL

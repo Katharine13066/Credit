@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!--
+  ~ Copyright (c) 2023 LTD Haulmont Samara. All Rights Reserved.
+  ~ Haulmont Samara proprietary and confidential.
+  ~ Use is subject to license terms.
+  -->
+
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        xmlns:thesis="http://schemas.haulmont.com/thesis/thesis-window.xsd"
+        xmlns:ext="http://schemas.haulmont.com/cuba/window-ext.xsd"
+        class="com.company.credit.web.ui.extindividual.ExtIndividualEditor"
+        extends="com/haulmont/thesis/web/ui/individual/individual-edit.xml"
+        messagesPack="com.company.credit.web.ui.extindividual">
+    <dsContext>
+        <datasource id="individualDs" class="com.company.credit.entity.ExtIndividual"/>
+    </dsContext>
+    <layout>
+        <hbox id="mainPane">
+            <tabSheet id="tabsheet">
+                <tab id="mainTab">
+                    <scrollBox id="mainTabScrollBox">
+                        <hbox id="mainGridBox">
+                            <grid id="rightGrid">
+                                <rows>
+                                    <row id="counterRow">
+                                        <textField datasource="individualDs" property="counter"
+                                                   caption="msg://com.company.credit.entity/ExtIndividual.counter"
+                                                   width="theme://thesis.gui.editor-fields.width"/>
+                                    </row>
+                                </rows>
+                            </grid>
+                        </hbox>
+                    </scrollBox>
+                </tab>
+            </tabSheet>
+        </hbox>
+    </layout>
+</window>

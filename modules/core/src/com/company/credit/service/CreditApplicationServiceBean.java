@@ -11,6 +11,7 @@ import com.haulmont.cuba.core.EntityManager;
 import com.haulmont.cuba.core.Persistence;
 import com.haulmont.cuba.core.Query;
 import com.haulmont.cuba.core.Transaction;
+import com.haulmont.thesis.core.entity.Individual;
 import org.springframework.stereotype.Service;
 
 import javax.inject.Inject;
@@ -32,6 +33,21 @@ public class CreditApplicationServiceBean implements CreditApplicationService {
             query.setParameter("contractorId", creditApplication.getIndividual().getId());
             query.setParameter("bankId", creditApplication.getCredit().getBank().getId());
 
+            count = (Long) query.getFirstResult();
+            transaction.commit();
+        }
+        return count != null ? count : 0;
+    }
+
+    @Override
+    public long getCreditApplicationCount(Individual individual) {
+        Long count;
+        try (Transaction transaction = persistence.createTransaction()) {
+            EntityManager entityManager = persistence.getEntityManager();
+            Query query = entityManager.createQuery(
+                    "select count(ca) from credit$CreditApplication ca where ca.individual.id = :individualId"
+            );
+            query.setParameter("individualId", individual.getId());
             count = (Long) query.getFirstResult();
             transaction.commit();
         }

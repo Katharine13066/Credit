@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!--
+  ~ Copyright (c) 2023 LTD Haulmont Samara. All Rights Reserved.
+  ~ Haulmont Samara proprietary and confidential.
+  ~ Use is subject to license terms.
+  -->
+
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        xmlns:thesis="http://schemas.haulmont.com/thesis/thesis-window.xsd"
+        xmlns:ext="http://schemas.haulmont.com/cuba/window-ext.xsd"
+        class="com.company.credit.web.ui.extindividual.ExtIndividualBrowseFrame"
+        extends="com/haulmont/thesis/web/ui/individual/individual-browse-frame.xml"
+        messagesPack="com.company.credit.web.ui.extindividual">
+    <dsContext>
+        <groupDatasource id="individualsDs" class="com.company.credit.entity.ExtIndividual" view="browse"/>
+    </dsContext>
+    <layout>
+        <vbox id="table-panel">
+            <groupTable id="individualsTable">
+                <columns>
+                    <column id="counter"/>
+                </columns>
+            </groupTable>
+        </vbox>
+    </layout>
+</window>
