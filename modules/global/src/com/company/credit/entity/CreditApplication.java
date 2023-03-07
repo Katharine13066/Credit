@@ -6,6 +6,7 @@
 
 package com.company.credit.entity;
 
+import com.haulmont.chile.core.annotations.NamePattern;
 import com.haulmont.chile.core.datatypes.Datatypes;
 import com.haulmont.chile.core.model.MetaClass;
 import com.haulmont.cuba.core.entity.annotation.EnableRestore;
@@ -32,6 +33,7 @@ import java.util.Set;
 @EnableRestore
 @TrackEditScreenHistory
 @PrimaryKeyJoinColumn(name = "CARD_ID", referencedColumnName = "ID")
+@NamePattern("%s|description")
 public class CreditApplication extends Doc implements HasDetailedDescription {
 
     private static final long serialVersionUID = -9145638764371438134L;
